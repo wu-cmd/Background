@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-  <div>nihao </div>
    <router-view/>
   </div>
 </template>
