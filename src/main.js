@@ -5,8 +5,12 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
-
+//引入全局样式
 import './assets/css/global.css'
+import axios from 'axios'
+axios.defaults.baseURL='http://frontdev.youqimei.com/plat/v1'
+Vue.prototype.$http = axios //大家可以直接通过this访问$http 的axios
+
 Vue.config.productionTip = false
 
 new Vue({
