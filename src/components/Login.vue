@@ -65,7 +65,7 @@ export default {
       }
       //  const {data:res}  = await this.$http.post("login",params);
       const result  = await this.$http.post("login",params);
-      if(result.status !==200) return this.$message.error('登录失败')
+      if(result.data.code !== 0) return this.$message.error('登录失败')
       this.$message.success('登录成功')
       // 1、将登录成功之后的token，保存到客户端的sessionStorage中
         // 1.1项目中出了登录之外的其他接口API接口，必须在访问之后才能访问

@@ -9,6 +9,13 @@ Vue.use(ElementUI)
 import './assets/css/global.css'
 import axios from 'axios'
 axios.defaults.baseURL='http://frontdev.youqimei.com/plat/v1'
+// 请求拦截：请求接口数据到服务器之前做数据拦截处理处理完发送到服务器
+// 通过axios请求拦截器添加token，保障拥有获取数据的权限
+axios.interceptors.request.use(config =>{
+  console.log("config",config)
+  config.headers.authorization ='Bearer' +' '+ sessionStorage.getItem('token')
+    return config
+})
 Vue.prototype.$http = axios //大家可以直接通过this访问$http 的axios
 
 Vue.config.productionTip = false
