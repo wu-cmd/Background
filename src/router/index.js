@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Welcome from '@/components/Welcome'
 import Adduser from '@/components/Adduser'
+import manage from '@/components/manage'
 // 1、安装插件
 Vue.use(Router)
 // //2、创建router 
@@ -11,12 +12,15 @@ const routes = [
 // 配置映射关系
     { path:'', redirect:'/Login'},  
     { path:'/login',  component: Login,  name: 'Login'},
+    
     { 
         path:'/home',   
         component: Home, 
         name: 'Home',
         redirect:"/welcome",
-        children:[{path:'/welcome',component:Welcome},{path:'/adduser',component:Adduser}]
+        children:[{path:'/welcome',component:Welcome},
+        {path:'/adduser',component:Adduser},
+        { path:'/manage',  component: manage,  name: 'manage'}]
     }
 ]
 const router = new Router({

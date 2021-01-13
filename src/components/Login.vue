@@ -35,8 +35,8 @@ export default {
       return{
         // 这是登录表单的数据绑定对象
         loginForm: {
-          username: '',
-          password:''
+          username: '1057286357@qq.com',
+          password:'admin222'
         },
         // 这是表单的验证
         loginFormRules:{

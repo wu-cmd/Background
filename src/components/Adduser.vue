@@ -1,30 +1,33 @@
-<template>
+ <template>
   <div>
-      <div>菜单名：<input type="text"></div>
-      <div>菜单名：<input type="text"></div>
-      
-  <div>
-<el-dropdown>
-    <el-button type="primary" @click="handleClick">
-    更多菜单<i class="el-icon-arrow-down el-icon--right"></i>
-    </el-button>
-    <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item>黄金糕</el-dropdown-item>
-    <el-dropdown-item>狮子头</el-dropdown-item>
-    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-    <el-dropdown-item>双皮奶</el-dropdown-item>
-    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-  </el-dropdown-menu>
-</el-dropdown> 
-</div>
+      <div>上级ID 0为顶级:<input type="text" v-model="message.greade"></div>
+      <div>菜单名：<input type="text" v-model="message.dan"></div>
+      <div>路径:<input type="text" v-model="message.path"></div>
+      <button @click="handleClick">提交</button>
   </div>
 </template>
 
 <script>
 export default {
+  data(){
+    return{
+        message:{
+          greade: 1,
+          dan:"",
+          path:""
+        }
+    }
+  },
   methods: {
-      handleClick() {
-        alert('button click');
+    
+     async handleClick() {
+        let data ={
+         ParentID: this.message.greade,
+         AuthName:this.message.dan,
+         Path: this.message.path 
+    }
+        const adduser = await this.$http.post('/menu/add',data)
+        console.log("adduser",adduser)
       }
     }
   
@@ -32,13 +35,4 @@ export default {
 
 </script>
 <style scoped>
- .el-dropdown {
-    vertical-align: top;
-  }
-  .el-dropdown + .el-dropdown {
-    margin-left: 15px;
-  }
-  .el-icon-arrow-down {
-    font-size: 12px;
-  }
 </style>
