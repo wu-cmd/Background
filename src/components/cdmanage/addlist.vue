@@ -1,6 +1,6 @@
  <template>
   <div>
-      <div>上级ID 0为顶级:<input type="text" v-model="message.greade"></div>
+      <div>MenuID 0为顶级:<input type="text" v-model="message.greade"></div>
       <div>菜单名：<input type="text" v-model="message.dan"></div>
       <div>路径:<input type="text" v-model="message.path"></div>
       <button @click="handleClick">提交</button>
@@ -19,7 +19,6 @@ export default {
     }
   },
   methods: {
-    
      async handleClick() {
         let data ={
          ParentID: this.message.greade,

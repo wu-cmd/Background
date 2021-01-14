@@ -20,10 +20,12 @@
         <!-- 侧边栏菜单区域 -->
         <el-menu background-color="#545c64"
                  text-color="#fff"
-                 active-text-color="#ffd04b"
+                 active-text-color="#409eff"
                  :router="true"
                  :collapse="isCollapse"
-                 :collapse-transition="false">
+                 :collapse-transition="false"
+                 :default-active="activefault"
+                 >
           <!-- 一级菜单 -->
           <el-submenu :index="item.MenuID + '' "
                       v-for="item in menulist"
@@ -31,21 +33,22 @@
             <!-- 一级菜单的模板区 -->
             <template slot="title">
               <!-- 图标 -->
-              <i class="el-icon-location"></i>
+              <i :class="iconsObj[item.MenuID]" class="rt"></i>
               <!-- 文本 -->
               <span>{{item.AuthName}}</span>
             </template>
             <!-- 二级菜单 -->
-            <!-- <el-menu-item :index="'/'+item1.Path + '' "
-                          v-for="(item1) in item.children"
-                          :key="item1.ParentID"> -->
-                           <el-menu-item index="adduser">
+            <el-menu-item :index="'/'+itema.Path + '' "
+                          v-for="(itema) in item.children"
+                          :key="itema.MenuID"
+                          @click="saveNavState('/'+itema.Path)"
+                          >
+                           <!-- <el-menu-item index="adduser"> -->
               <template slot="title">
                 <!-- 图标 -->
-                <i class="el-icon-location"></i>
+                <i class="el-icon-menu zrt" ></i>
                 <!-- 文本 -->
-                <!-- <span>{{item1.AuthName}}</span> -->
-                <span>nini </span>
+                <span>{{itema.AuthName}}</span>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -68,10 +71,23 @@ export default {
       isCollapse: false,
       //  左侧菜单数据
       menulist: [],
+      // 图标
+      iconsObj:{
+        '25':'el-icon-user-solid',
+        '28':'el-icon-s-help',
+        '29':'el-icon-s-open',
+        '30':'el-icon-s-comment',
+        '31':'el-icon-s-data',
+        '38':'el-icon-s-operation',
+      },
+      // 被激活的空地址
+      activefault:""
+
     }
   },
   created() {
-    this.getMenuList()
+    this.getMenuList(),
+    this.activefault = sessionStorage.getItem("activePath")
   },
   methods: {
     loginout() {
@@ -88,6 +104,11 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
     },
+    // 点击保存链接的激活状态
+    saveNavState(activePath){
+      window.sessionStorage.setItem("activePath",activePath)
+
+    }
   },
 }
 </script>
@@ -156,5 +177,11 @@ body > .el-container {
   color: #fff;
   letter-spacing: 0.2em;
   cursor: pointer;
+}
+.rt{
+  margin-right: 10px;
+}
+.zrt{
+  padding-left: 45px;
 }
 </style>

@@ -3,8 +3,15 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Welcome from '@/components/Welcome'
-import Adduser from '@/components/Adduser'
-import manage from '@/components/manage'
+import Addlist from '@/components/cdmanage/addlist'
+import Deletelist from '@/components/cdmanage/Deletelist'
+import Userlist from '@/components/user/Userlist'
+import Jslist from '@/components/role/Jslist'
+import Qxlist from '@/components/role/Qxlist'
+import Classlist from '@/components/shop/Classlist'
+import SpClass from '@/components/shop/SpClass'
+import Splist from '@/components/shop/Splist'
+
 // 1、安装插件
 Vue.use(Router)
 // //2、创建router 
@@ -18,9 +25,21 @@ const routes = [
         component: Home, 
         name: 'Home',
         redirect:"/welcome",
-        children:[{path:'/welcome',component:Welcome},
-        {path:'/adduser',component:Adduser},
-        { path:'/manage',  component: manage,  name: 'manage'}]
+        children:[
+          {path:'/welcome',component:Welcome},
+          { path:'/userlist',  component: Userlist },
+          // 权限管理
+          { path:'/jslist',  component: Jslist },
+          { path:'/qxlist',  component: Qxlist },
+          // 商品管理
+          { path:'/Classlist',  component: Classlist },
+          { path:'/SpClass',  component: SpClass },
+          { path:'/Splist',  component: Splist },
+           // 菜单管理
+           {path:'/addlist',component:Addlist},
+           {path:'/deletelist',component:Deletelist},
+          
+      ]
     }
 ]
 const router = new Router({
