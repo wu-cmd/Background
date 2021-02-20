@@ -6,7 +6,7 @@
         <img class="loginimg"
              src="../assets/logo.png"
              alt="">
-        <span class="bgtext">电商后台管理系统</span>
+        <span class="bgtext">小客抖管理系统</span>
       </div>
       <el-button type="info"
                  @click="loginout">退出</el-button>
@@ -98,7 +98,7 @@ export default {
     async getMenuList() {
       const { data: res } = await this.$http.get('/menu/list')
       this.menulist = res.data
-      console.log(res)
+      // console.log(res)
     },
     //  切换菜单的折叠与展开
     toggleCollapse() {

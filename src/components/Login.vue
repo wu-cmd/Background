@@ -36,7 +36,7 @@ export default {
         // 这是登录表单的数据绑定对象
         loginForm: {
           username: '1057286357@qq.com',
-          password:'admin222'
+          password:'admin111'
         },
         // 这是表单的验证
         loginFormRules:{
@@ -52,9 +52,17 @@ export default {
       }
   },
   methods:{
+
+
+
+
     resetLoginForm(){
       this.$refs.form.resetFields();
     },
+
+
+
+
     login(){
       this.$refs.form.validate(async valid =>{
       // 如果为false，不发送请求
@@ -65,7 +73,7 @@ export default {
       }
       //  const {data:res}  = await this.$http.post("login",params);
       const result  = await this.$http.post("login",params);
-      if(result.data.code !== 0) return this.$message.error('登录失败')
+      if(result.data.code !== 0) return this.$message.console.error('登录失败');
       this.$message.success('登录成功')
       // 1、将登录成功之后的token，保存到客户端的sessionStorage中
         // 1.1项目中出了登录之外的其他接口API接口，必须在访问之后才能访问
