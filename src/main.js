@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 这个是mockjs的开关
+import "./VmRequest/mock_utils/index"
 // 手动配置element-ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
