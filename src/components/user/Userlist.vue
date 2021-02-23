@@ -125,7 +125,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { FirstRes } from '../../VmRequest/manage'
+=======
+
+>>>>>>> 6c87510e04b84cdf8be77c35308fd858b16eec7b
 export default {
   data() {
     return {
@@ -169,6 +173,7 @@ export default {
     // setTimeout(function() {
     //   alert("进来了")
     // },3000)
+<<<<<<< HEAD
     console.log(11111);
 
     //  FirstRes('/aDataes', {}).then((res) => { 
@@ -176,6 +181,10 @@ export default {
     //     console.log('jieguo', res)
     //  })
      console.log(3333);
+=======
+
+ 
+>>>>>>> 6c87510e04b84cdf8be77c35308fd858b16eec7b
   },
   
   methods: {
