@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { FirstRes } from '../api/manage'
+// import { FirstRes } from '../api/manage'
 export default {
   name:'Login',
   data(){
@@ -54,9 +54,9 @@ export default {
   },
 
   created(){
-        FirstRes('/login', {}).then((res) => { 
-        console.log('jieguo', res)
-     })
+    //     FirstRes('/login', {}).then((res) => { 
+    //     console.log('jieguo', res)
+    //  })
   },
   methods:{
     resetLoginForm(){
