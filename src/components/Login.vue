@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { FirstRes } from '../api/manage'
 export default {
   name:'Login',
   data(){
@@ -51,18 +52,16 @@ export default {
         },
       }
   },
+
+  created(){
+        FirstRes('/login', {}).then((res) => { 
+        console.log('jieguo', res)
+     })
+  },
   methods:{
-
-
-
-
     resetLoginForm(){
       this.$refs.form.resetFields();
     },
-
-
-
-
     login(){
       this.$refs.form.validate(async valid =>{
       // 如果为false，不发送请求
@@ -71,7 +70,6 @@ export default {
         UserName : this.loginForm.username,
         UserPassword : this.loginForm.password,
       }
-      //  const {data:res}  = await this.$http.post("login",params);
       const result  = await this.$http.post("login",params);
       if(result.data.code !== 0) return this.$message.console.error('登录失败');
       this.$message.success('登录成功')

@@ -53,8 +53,7 @@
                        @change="userStateChange(scope.row)"></el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="操作"
-                         width="180px">
+        <el-table-column label="操作" width="180px">
           <template>
             <!-- slot-scope="scope" -->
             <!-- 修改按钮 -->
@@ -84,8 +83,8 @@
       <el-pagination @size-change="handleSizeChange"
                      @current-change="handleCurrentChange"
                      :current-page="queryinfo.pagenum"
-                     :page-sizes="[1, 2, 5, 10]"
                      :page-size="queryinfo.pagesize"
+                     :page-sizes="[1, 2, 5, 10]"
                      layout="total, sizes, prev, pager, next, jumper"
                      :total="totle">
       </el-pagination>
@@ -126,6 +125,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -169,7 +169,10 @@ export default {
     // setTimeout(function() {
     //   alert("进来了")
     // },3000)
+
+ 
   },
+  
   methods: {
     async getUserlist() {
       const { data: res } = await this.$http.get('/user/users', {
@@ -183,18 +186,19 @@ export default {
       this.userlist = res.data.row
       this.totle = res.data.total
     },
+        // 监听页码值改变事件
+    handleCurrentChange(page) {
+      console.log("pagenum",page);
+      this.queryinfo.pagenum =page;
+      this.getUserlist()
+    },
     // 监听pagesize改变的事件
     handleSizeChange(newSize) {
       console.log("newSize",newSize);
-      this.queryinfo.pagenum =newSize;
+      this.queryinfo.pagesize =newSize;
       this.getUserlist()
     },
-    // 监听页码值改变事件
-    handleCurrentChange(pagenum) {
-      console.log("pagenum",pagenum);
-      this.queryinfo.pagenum =pagenum;
-      this.getUserlist()
-    },
+
     // 监听swich状态改变
     async userStateChange(userinfo) {
       console.log('userinfo', userinfo)
